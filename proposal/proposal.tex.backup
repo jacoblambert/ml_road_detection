@@ -31,26 +31,22 @@ Autonomous Driving: Road-Estimation}
 
 
 \section{Dataset}
-The data used in this project is provided by the KITTI Vision Benchmarking Suite\footnote{ \url{http://www.cvlibs.net/datasets/kitti/}} which is widely used in robotics for testing machine learning algorithms. The Road/Lane Detection Evaluation (2013) dataset contains images (pixel color intensity) of urban scenes taken from the top of a vehicle, which ground truth labels for roads. There are three different scene categories, as seen in figure \ref{fig:kitti}:
+The dataset used in this project is KITTI Vision Benchmarking Suite\footnote{\url{http://www.cvlibs.net/datasets/kitti/}} which is widely used in robotics for testing machine learning algorithms. The Road/Lane Detection Evaluation (2013) dataset contains images of urban scenes taken from the top of a vehicle, which ground truth labels for roads. There are three different scene categories, as seen in figure \ref{fig:kitti}:
 \begin{itemize}
  \item urban unmarked roads (uu),
  \item urban marked roads (um),
  \item urban roads with multiple marked lanes (umm),
 \end{itemize}
 each with roughly 100 training images and 100 test images.
-\begin{figure}[ht!]
+\begin{figure}
  \centering
- \includegraphics[width=0.99\textwidth]{figs/kitti.jpg}
- \caption{Example of the different scenes in this KITTI dataset with road labels.}\label{fig:kitti}
+ \includegraphics[width=0.9\textwidth]{figs/kitti.jpg}
+ \caption{Example of the KITTI dataset used for this project}\label{fig:kitti}
 \end{figure}
-The main dataset used will be the urban marked road dataset as project focuses road estimation and not individual lanes. A possible extension to this project would be to analyze the impact of scene type by evaluating performance on all datasets individually, then combining them.
+This project focuses road estimation and not individual lanes, 
 
 \section{Algorithms}
-\begin{itemize}
- \item $k$-means
- \item $k$-Nearest Neighbours
- \item Support Vector Machines
-\end{itemize}
+
 
 \section{References}
 
