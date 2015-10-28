@@ -28,27 +28,34 @@ Autonomous Driving: Road-Estimation}
 \maketitle
 
 \section{Project Overview}
+The project we propose consists of a comparison of classification algorithms in their ability to accurately classsify what is road and non-road in the autonomous driving: road estimation suggested topic~\cite{csc2515_suggestedprojects}. The dataset is the base kit of the road/lane detection evaluation of the KITTI dataset, described in further detail below. As suggested in~\cite{csc2515_suggestedprojects}, the training data will be split into 60\% for training, 10\% for validation, and 30\% for testing, and preprocessed to conduct the classification on superpixels. The algorithms used for comparison are discussed below, and will be compared in false-positive and false-negative error rates.
 
 
 \section{Dataset}
-The dataset used in this project is KITTI Vision Benchmarking Suite\footnote{\url{http://www.cvlibs.net/datasets/kitti/}} which is widely used in robotics for testing machine learning algorithms. The Road/Lane Detection Evaluation (2013) dataset contains images of urban scenes taken from the top of a vehicle, which ground truth labels for roads. There are three different scene categories, as seen in figure \ref{fig:kitti}:
+The data used in this project is provided by the KITTI Vision Benchmarking Suite\footnote{ \url{http://www.cvlibs.net/datasets/kitti/}} which is widely used in robotics for testing machine learning algorithms. The Road/Lane Detection Evaluation (2013) dataset contains images (pixel color intensity) of urban scenes taken from the top of a vehicle, which ground truth labels for roads. There are three different scene categories, as seen in figure \ref{fig:kitti}:
 \begin{itemize}
  \item urban unmarked roads (uu),
  \item urban marked roads (um),
  \item urban roads with multiple marked lanes (umm),
 \end{itemize}
 each with roughly 100 training images and 100 test images.
-\begin{figure}
+\begin{figure}[ht!]
  \centering
- \includegraphics[width=0.9\textwidth]{figs/kitti.jpg}
- \caption{Example of the KITTI dataset used for this project}\label{fig:kitti}
+ \includegraphics[width=0.99\textwidth]{figs/kitti.jpg}
+ \caption{Example of the different scenes in this KITTI dataset with road labels.}\label{fig:kitti}
 \end{figure}
-This project focuses road estimation and not individual lanes, 
+The main dataset used will be the urban marked road dataset as project focuses road estimation and not individual lanes. A possible extension to this project would be to analyze the impact of scene type by evaluating performance on all datasets individually, then combining them.
 
 \section{Algorithms}
+This project will compare three supervised learning algorithms and potentially a state-of-the-art technique. The three benchmarking algorithms are:
+\begin{description}
+ \item[Regression], relates input and output based on a function. Several different functions will be tested (linear, logistic, polynomial).
+ \item[$k$NN], which classifies based on the majority vote of its $k$ Nearest Neighbours in feature space.
+ \item[Support Vector Machines (SVM)], which attempts to learn a map from the input to a seperable feature space used for classification.
+\end{description}
 
+There are several possibilities for state-of-the-art techniques to test for this task. Neural Networks are currently on top of the KITTI leaderboard for this classification tasks, specifically Convoluted Neural Networks\cite{}
 
 \section{References}
-
 
 \end{document}
