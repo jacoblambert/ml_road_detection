@@ -6,7 +6,7 @@
 \usepackage{listings}
 \usepackage{amssymb}
 \usepackage{url}
-
+\usepackage{cite}
 
 \title{\textbf{CSC2515 Project Proposal} \\
 Autonomous Driving: Road-Estimation}
@@ -29,11 +29,11 @@ Autonomous Driving: Road-Estimation}
 \maketitle
 
 \section{Project Overview}
-The project we propose consists of a comparison of classification algorithms in their ability to accurately classsify what is road and non-road in the suggested autonomous driving: road estimation topic. The dataset is the base kit of the road/lane detection evaluation of the KITTI dataset, described in further detail below. The training data will be split into 60\% for training, 10\% for validation, and 30\% for testing, and preprocessed to conduct the classification on superpixels. The algorithms used for comparison are listed below, and will be compared in false-positive and false-negative error rates.
+The project we propose consists of a comparison of classification algorithms in their ability to accurately classsify what is road and non-road in the suggested autonomous driving: road estimation topic. The dataset is the base kit of the road/lane detection evaluation of the KITTI dataset, described in further detail below. The training data will be split into 60\% for training, 10\% for validation, and 30\% for testing, and preprocessed to conduct the classification on superpixels. The algorithms used for comparison are listed below, and will be compared in precision, false-positive and false-negative error rates.
 
 
 \section{Dataset}
-The data used in this project is provided by the KITTI Vision Benchmarking Suite\footnote{ \url{http://www.cvlibs.net/datasets/kitti/}} which is widely used in robotics for testing machine learning algorithms. The Road/Lane Detection Evaluation (2013) dataset contains images (pixel color intensity) of urban scenes taken from the top of a vehicle, which ground truth labels for roads. There are three different scene categories, as seen in figure \ref{fig:kitti}:
+The data used in this project is provided by the KITTI Vision Benchmarking Suite\footnote{ \url{http://www.cvlibs.net/datasets/kitti/}} which is widely used in robotics for testing machine learning algorithms. The Road/Lane Detection Evaluation (2013) dataset contains images (with individual pixel color intensity) of urban scenes taken from the top of a vehicle, with ground truth labels for roads. There are three different scene categories, as seen in figure \ref{fig:kitti}:
 \begin{itemize}
  \item urban unmarked roads (uu),
  \item urban marked roads (um),
@@ -52,10 +52,11 @@ This project will compare three supervised learning algorithms and potentially a
 \begin{description}
  \item[Regression:] relates input and output based on a function. Several different functions will be tested (linear, logistic, polynomial, etc.).
  \item[$k$NN:] classifies based on the majority vote of its $k$ Nearest Neighbours in feature space.
- \item[Support Vector Machines:] attempts to learn a map from the input to a seperable feature space used for classification.
+ \item[SVMs:] Support vector machines attempts to learn a map from the input to a seperable feature space used for classification.
 \end{description}
 
-There are several possibilities for state-of-the-art techniques to test for this task. An obvious choice would be Convoluted Neural Networks which, according to the KITTI leaderboard, perform very well on this task\cite{}. Further research will be required to find a complex algorithm that remains within the scope of this course.
+SVMs and $k$NN have been compared for image classification in \cite{comparing2012}. Otherwise, there are several possibilities for state-of-the-art techniques to test for this task but obvious choice would be Convoluted Neural Networks which, according to the KITTI leaderboard, perform very well on this task\cite{imagenet2012, deep2014}. Further research will be required to find a more complex algorithm that remains within the scope of this course.
 
-\bibliography{csc2515-bib.bib}
+\bibliographystyle{plain}
+\bibliography{csc2515-bib}
 \end{document}
