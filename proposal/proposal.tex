@@ -6,7 +6,7 @@
 \usepackage{listings}
 \usepackage{amssymb}
 \usepackage{url}
-
+\usepackage{cite}
 
 \title{\textbf{CSC2515 Project Proposal} \\
 Autonomous Driving: Road-Estimation}
@@ -48,15 +48,15 @@ each with roughly 100 training images and 100 test images.
 The main dataset used will be the urban marked road dataset as project focuses road estimation and not individual lanes. A possible extension to this project would be to analyze the impact of scene type by evaluating performance on all datasets individually, then combining them.
 
 \section{Algorithms}
-This project will compare three supervised learning algorithms and potentially a state-of-the-art technique. The three benchmarking algorithms are:
+This project will compare three supervised learning algorithms\cite{comparing2012} and potentially a state-of-the-art technique. The three benchmarking algorithms are:
 \begin{description}
  \item[Regression:] relates input and output based on a function. Several different functions will be tested (linear, logistic, polynomial, etc.).
  \item[$k$NN:] classifies based on the majority vote of its $k$ Nearest Neighbours in feature space.
  \item[Support Vector Machines:] attempts to learn a map from the input to a seperable feature space used for classification.
 \end{description}
 
-There are several possibilities for state-of-the-art techniques to test for this task. An obvious choice would be Convoluted Neural Networks which, according to the KITTI leaderboard, perform very well on this task\cite{}. Further research will be required to find a complex algorithm that remains within the scope of this course.
+There are several possibilities for state-of-the-art techniques to test for this task. An obvious choice would be Convoluted Neural Networks which, according to the KITTI leaderboard, perform very well on this task\cite{imagenet2012, deep2014}. Further research will be required to find a complex algorithm that remains within the scope of this course.
 
-\section{References}
-
+\bibliographystyle{plain}
+\bibliography{csc2515-bib}
 \end{document}

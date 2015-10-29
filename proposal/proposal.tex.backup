@@ -7,6 +7,7 @@
 \usepackage{amssymb}
 \usepackage{url}
 
+
 \title{\textbf{CSC2515 Project Proposal} \\
 Autonomous Driving: Road-Estimation}
 \author{
@@ -28,7 +29,7 @@ Autonomous Driving: Road-Estimation}
 \maketitle
 
 \section{Project Overview}
-The project we propose consists of a comparison of classification algorithms in their ability to accurately classsify what is road and non-road in the autonomous driving: road estimation suggested topic~\cite{csc2515_suggestedprojects}. The dataset is the base kit of the road/lane detection evaluation of the KITTI dataset, described in further detail below. As suggested in~\cite{csc2515_suggestedprojects}, the training data will be split into 60\% for training, 10\% for validation, and 30\% for testing, and preprocessed to conduct the classification on superpixels. The algorithms used for comparison are discussed below, and will be compared in false-positive and false-negative error rates.
+The project we propose consists of a comparison of classification algorithms in their ability to accurately classsify what is road and non-road in the suggested autonomous driving: road estimation topic. The dataset is the base kit of the road/lane detection evaluation of the KITTI dataset, described in further detail below. The training data will be split into 60\% for training, 10\% for validation, and 30\% for testing, and preprocessed to conduct the classification on superpixels. The algorithms used for comparison are listed below, and will be compared in false-positive and false-negative error rates.
 
 
 \section{Dataset}
@@ -49,13 +50,12 @@ The main dataset used will be the urban marked road dataset as project focuses r
 \section{Algorithms}
 This project will compare three supervised learning algorithms and potentially a state-of-the-art technique. The three benchmarking algorithms are:
 \begin{description}
- \item[Regression], relates input and output based on a function. Several different functions will be tested (linear, logistic, polynomial).
- \item[$k$NN], which classifies based on the majority vote of its $k$ Nearest Neighbours in feature space.
- \item[Support Vector Machines (SVM)], which attempts to learn a map from the input to a seperable feature space used for classification.
+ \item[Regression:] relates input and output based on a function. Several different functions will be tested (linear, logistic, polynomial, etc.).
+ \item[$k$NN:] classifies based on the majority vote of its $k$ Nearest Neighbours in feature space.
+ \item[Support Vector Machines:] attempts to learn a map from the input to a seperable feature space used for classification.
 \end{description}
 
-There are several possibilities for state-of-the-art techniques to test for this task. Neural Networks are currently on top of the KITTI leaderboard for this classification tasks, specifically Convoluted Neural Networks\cite{}
+There are several possibilities for state-of-the-art techniques to test for this task. An obvious choice would be Convoluted Neural Networks which, according to the KITTI leaderboard, perform very well on this task\cite{}. Further research will be required to find a complex algorithm that remains within the scope of this course.
 
-\section{References}
-
+\bibliography{csc2515-bib.bib}
 \end{document}

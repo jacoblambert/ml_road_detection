@@ -1,0 +1,20 @@
+\begin{thebibliography}{1}
+
+\bibitem{comparing2012}
+Jinho Kim, Byung-Soo Kim, and Silvio Savarese.
+\newblock Comparing image classification methods: K-nearest-neighbor and
+  support-vector-machines.
+\newblock In {\em Proceedings of the 2012 American Conference on Applied
+  Mathematics}, pages 133--138, Stevens Point, Wisconsin, USA, 2012. (WSEAS).
+
+\bibitem{imagenet2012}
+Alex Krizhevsky, Ilya Sutskever, and Geoffrey~E. Hinton.
+\newblock Imagenet classification with deep convolutional neural networks.
+\newblock pages 1097--1105, 2012.
+
+\bibitem{deep2014}
+Rahul Mohan.
+\newblock Deep deconvolutional networks for scene parsing.
+\newblock {\em arXiv:1411.4101 [stat.ML]}, 2014.
+
+\end{thebibliography}
