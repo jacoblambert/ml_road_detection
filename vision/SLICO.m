@@ -2,7 +2,7 @@ function [labels,numlabels] = SLICO(img,showImgs)
 % GetSP computes superpixels using SLICO for a grayscale or RGB 'img'
 % showImg = 1 if you want it to show figures
 
-[labels,numlabels] = slicomex(img,1242);
+[labels,numlabels] = slicomex(img,800);
 
 if showImgs == 1
 % show image before superpixels
