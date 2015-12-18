@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.9.11)  17 DEC 2015 13:42
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.9.11)  18 DEC 2015 13:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -265,35 +265,40 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 26.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
 (Font)              Font shape `OT1/ptm/b/it' tried instead on input line 40.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 66.
- [1
+Missing character: There is no Ã in font ptmr7t!
+Missing character: There is no ¼ in font ptmr7t!
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 66.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 70.
+ [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 66.
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 70.
  (./nips2015.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 66.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 66.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 70.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 70.
 Package rerunfilecheck Info: File `nips2015.out' has not changed.
 (rerunfilecheck)             Checksum: 773CA35E8199DEC559B923CA45F82FD0;680.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 66.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 70.
  ) 
 Here is how much of TeX's memory you used:
- 5443 strings out of 493304
- 79286 string characters out of 6139871
- 164963 words of memory out of 5000000
- 8866 multiletter control sequences out of 15000+600000
- 13812 words of font info for 29 fonts, out of 8000000 for 9000
+ 5452 strings out of 493304
+ 79372 string characters out of 6139871
+ 167986 words of memory out of 5000000
+ 8870 multiletter control sequences out of 15000+600000
+ 19804 words of font info for 36 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 37i,8n,39p,207b,318s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,11n,39p,269b,320s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
-/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.
-pfb>
-Output written on nips2015.pdf (1 page, 42069 bytes).
+fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi
+8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on nips2015.pdf (1 page, 58741 bytes).
 PDF statistics:
- 83 PDF objects out of 1000 (max. 8388607)
- 75 compressed objects within 1 object stream
+ 91 PDF objects out of 1000 (max. 8388607)
+ 81 compressed objects within 1 object stream
  15 named destinations out of 1000 (max. 500000)
  97 words of extra memory for PDF output out of 10000 (max. 10000000)
 
