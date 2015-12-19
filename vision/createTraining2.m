@@ -1,7 +1,7 @@
 % This script performs feature extraction over a database of images
 close all; clear all; clc;
 prefix = 'uu_'; % um_ umm_ uu_
-nImages = 97; % 94 95 97
+nImages = 95; % 94 95 97
 trainingExamples = [];
 targets = [];
 numExamples = 0;

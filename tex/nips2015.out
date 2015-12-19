@@ -1,12 +1,4 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
 \BOOKMARK [2][-]{subsection.1.1}{Related Work}{section.1}% 2
 \BOOKMARK [1][-]{section.2}{Dataset}{}% 3
-\BOOKMARK [2][-]{subsection.2.1}{Kitti}{section.2}% 4
-\BOOKMARK [2][-]{subsection.2.2}{Superpixel Segmentation}{section.2}% 5
-\BOOKMARK [2][-]{subsection.2.3}{Feature Selection}{section.2}% 6
-\BOOKMARK [1][-]{section.3}{Algorithms}{}% 7
-\BOOKMARK [2][-]{subsection.3.1}{k Nearest Neighbors}{section.3}% 8
-\BOOKMARK [2][-]{subsection.3.2}{Support Vector Machines}{section.3}% 9
-\BOOKMARK [2][-]{subsection.3.3}{Neural Network}{section.3}% 10
-\BOOKMARK [1][-]{section.4}{Results}{}% 11
-\BOOKMARK [1][-]{section.5}{Discussion}{}% 12
+\BOOKMARK [2][-]{subsection.2.1}{KITTI}{section.2}% 4
