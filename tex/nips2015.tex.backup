@@ -119,6 +119,21 @@ Here we use the Simple Linear Iterative Clustering (SLIC) algorithm[2] to segmen
  \caption{Performance of the SLIC algorithm on the um dataset.}\label{fig:SLIC}
 \end{figure}
 
+*Talk about performance on each environment*
+
+As the segmentation is imperfect, some superpixels will inevitably contain positive and negative examples. To solve this issue, a new ground truth image was created (shown in figure \ref{fig:SLICgt}), where each superpixel was classified based on the majority of pixels in its cluster.
+
+\begin{figure}
+ \centering
+  \includegraphics[width=0.49\linewidth]{figs/noSLICimage}\hspace{-3pt}
+  \includegraphics[width=0.49\linewidth]{figs/SLICimage.png}\hspace{-3pt}\\
+  \vspace{-2pt}
+  \includegraphics[width=0.49\linewidth]{figs/noSLICgt.png}\hspace{-3pt}
+  \includegraphics[width=0.49\linewidth]{figs/SLICgt.png}\hspace{-3pt}
+  \caption{The image segmentation pipeline is shown here. The starting image (top left) is first segmented into superpixels by SLIC (top right) then the label (top l
+\end{figure}
+
+
 \subsection{Feature Selection}\label{sec:feat}
 
 The types of feature computed for each superpixel is a critical step in the classification pipeline as they need to convey enough information about the superpixel to allow classification. In this experiment chose a total of 14 simple and intuitive features. An example $\mbf{x}^{(i)}$ is stored as
@@ -131,7 +146,12 @@ $\mbf{r}^{(i)}=\left[x^{(i)}~~ y^{(i)}\right]$ is the centroid of the superpixel
 \begin{equation}
  \mbf{r}^{(i)} = \frac{1}{N}\sum_{n=1}^N \mbf{r}^{(i)}_n.
 \end{equation}
-Then, $\bs{\mu}_{RGB}^{(i)} = \left[\mu_{R}^{(i)}~~\mu_{G}^{(i)} ~~\mu_{B}^{(i)}  \right]$ and $\bs{\sigma}_{RGB}^{(i)} = \left[\sigma_{R}^{(i)}~~\sigma_{G}^{(i)} ~~\sigma_{B}^{(i)}  \right]$
+Then, $\bs{\mu}_{RGB}^{(i)} = \left[\mu_{R}^{(i)}~~\mu_{G}^{(i)} ~~\mu_{B}^{(i)}  \right]$ and $\bs{\sigma}_{RGB}^{(i)} = \left[\sigma_{R}^{(i)}~~\sigma_{G}^{(i)} ~~\sigma_{B}^{(i)}  \right]$ are the respective pixel intensity mean and variance for Red, Blue and Green color channels. Finally, we compute the gradient magnitude of the image in each color channel, which produces an image shown in figure \ref{fig:grad}. As computing the gradient picks out high frequency color variations, we expect it to pick out edges or high irregular regions like vegetation. Roads which are uniform should have low gradient magnitude and even lower variation. $\bs{\mu}_{\nabla RGB}^{(i)}$ and $\bs{\sigma}_{\nabla RGB}^{(i)}$ are then the mean color and variation for each color channel in the gradient image.
+\begin{figure}[ht!]
+\centering
+ \includegraphics[width=0.5\textwidth]{figs/grad.pdf}\\
+ \caption{Gradient magnitude of one of the images.}\label{fig:grad}
+\end{figure}
 
 
 
