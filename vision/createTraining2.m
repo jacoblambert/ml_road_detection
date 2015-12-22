@@ -6,8 +6,8 @@ trainingExamples = [];
 targets = [];
 numExamples = 0;
 tic;
-
-for i=0:nImages % Loop over images 
+i=55;
+%for i=0:nImages % Loop over images 
     %% Fetch image in db
     image = strcat(prefix,num2str(i,'%06i'),'.png');
     label = strcat(prefix,'road_',num2str(i,'%06i'),'.png');
@@ -19,7 +19,7 @@ for i=0:nImages % Loop over images
 %    imagesc(lbl);
     
     %% Compute superpixels
-    [superLabels, ~] = SLICO(img,0);
+    [superLabels, ~] = SLICO(img,1);
   
     %% Compute labels
     feat = computeFeatures(img,superLabels); % function loops over superpixel
@@ -39,6 +39,6 @@ for i=0:nImages % Loop over images
     fprintf('%d new examples added for a total of %d!\n',numNewExamples,numExamples);
     fprintf('dataset is %d%% complete\n',round(i/nImages * 100));
             
-end
+%end
 
 clearvars -except trainingExamples targets

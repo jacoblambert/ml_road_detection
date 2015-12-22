@@ -7,34 +7,66 @@
 % trainingExamples = origExamples(switcharoo,:);
 % targets = origTargets(switcharoo);
 
+SVM_error = zeros(1,3);
+error_index=1;
+tic;
+
+
 %% Split data into training/validation and testing
+for frac=0.4
 
-N=floor(0.4*length(targets)); % 1:N training
-M=floor(0.5*length(targets)); % N+1:M validation
-% M+1:end testing
-
-% default cross-val = 10;
-% 'linear', 'gaussian' , 'polynomial' with 'PolynomialOrder' (default=3
-%% Train various SVM models
-SVM1 = fitcsvm(trainingExamples(1:N,:),targets(1:N),'KernelFunction','linear');
-disp('done model #1')
-SVM2 = fitcsvm(trainingExamples(1:N,:),targets(1:N),'KernelFunction','gaussian'); 
-disp('done model #1')
-SVM3 = fitcsvm(trainingExamples(1:N,:),targets(1:N),'KernelFunction','polynomial','PolynomialOrder',2);
-disp('done model #3')
-SVM4 = fitcsvm(trainingExamples(1:N,:),targets(1:N),'KernelFunction','polynomial','PolynomialOrder',3);
-disp('done model #4')
-SVM5 = fitcsvm(trainingExamples(1:N,:),targets(1:N),'KernelFunction','polynomial','PolynomialOrder',4);
-disp('done model #5')
-
-%% Validate
-[label1,score1] = predict(SVM1,trainingExamples(N+1:M,:));
-[label2,score2] = predict(SVM2,trainingExamples(N+1:M,:));
-[label3,score3] = predict(SVM3,trainingExamples(N+1:M,:));
-[label4,score4] = predict(SVM4,trainingExamples(N+1:M,:));
-[label5,score5] = predict(SVM5,trainingExamples(N+1:M,:));
-error1 = sum(abs(label1-targets(N+1:M)))/length(targets(N+1:M));
-error2 = sum(abs(label2-targets(N+1:M)))/length(targets(N+1:M));
-error3 = sum(abs(label3-targets(N+1:M)))/length(targets(N+1:M));
-error4 = sum(abs(label4-targets(N+1:M)))/length(targets(N+1:M));
-error5 = sum(abs(label5-targets(N+1:M)))/length(targets(N+1:M));
+    for dataset=1:3
+        if dataset==1
+            load('um_data.mat')
+        elseif dataset==2
+            load('umm_data.mat')
+        else
+            load('uu_data.mat')
+        end
+        N=floor(frac*length(targets)); % 1:N training
+        M=floor((3*frac/7)*length(targets)); % end-M:end validation
+        % M+1:end testing
+    
+        %% Train various SVM models
+%         SVM_linear = fitcsvm(trainingExamples(1:N,:),targets(1:N),'KernelFunction','linear','Standardize',true); 
+%         disp('Linear SVM Training Complete');
+%         
+%         SVM_rbf = fitcsvm(trainingExamples(1:N,:),targets(1:N),'KernelFunction','rbf','Standardize',true); 
+%         disp('Gaussian SVM Training Complete');
+%         
+        SVM_poly = fitcsvm(trainingExamples(1:N,:),targets(1:N),'KernelFunction','polynomial','PolynomialOrder',3,'Standardize',true); 
+        disp('Polynomial (3) SVM Training Complete');
+        
+%         SVM_poly4 = fitcsvm(trainingExamples(1:N,:),targets2(1:N),'KernelFunction','polynomial','PolynomialOrder',3,'Standardize',true); 
+%         disp('Polynomial (4) SVM Training Complete');
+        
+%         SVM_sigmoid = fitcsvm(trainingExamples(1:N,:),targets(1:N),'KernelFunction','sigmoid','Standardize',true); 
+%         disp('Sigmoid SVM Training Complete');
+%         
+        %fprintf('All training complete for %i iteration. Testing %d%% complete.\n',round(error_index),round(error_index*100/14));
+        fprintf('%d minutes elapsed\n',round(toc/60));
+        %% Validate
+%         [label_linear,~] = predict(SVM_linear,trainingExamples(end-M:end,:));
+%         SVM_error(error_index,dataset,1) = sum(abs(label_linear-targets(end-M:end)))/length(targets(end-M:end));
+%         fprintf('%d%% error for linear SVM\n',round(100*SVM_error(error_index,dataset,1)));
+%         
+%         [label_rbf,~] = predict(SVM_rbf,trainingExamples(end-M:end,:));
+%         SVM_error(error_index,dataset,2) = sum(abs(label_rbf-targets(end-M:end)))/length(targets(end-M:end));
+%         fprintf('%d%% error for rbf SVM\n',round(100*SVM_error(error_index,dataset,2)))
+%         
+        [label_poly,~] = predict(SVM_poly,trainingExamples(end-M:end,:));
+        SVM_error(1,dataset) = sum(abs(label_poly-targets(end-M:end)))/length(targets(end-M:end));
+        %fprintf('%d%% error for polynomial (3) SVM\n',round(100*SVM_error(error_index,dataset,3)))
+        
+%         [label_poly4,~] = predict(SVM_poly4,trainingExamples(end-M:end,:));
+%         SVM_error(error_index,dataset,4) = sum(abs(label_poly4-targets(end-M:end)))/length(targets(end-M:end));
+%         fprintf('%d%% error for polynomial (4) SVM\n',round(100*SVM_error(error_index,dataset,4)))
+        
+%         [label_sigmoid,~] = predict(SVM_sigmoid,trainingExamples(end-M:end,:));
+%         SVM_error(error_index,dataset,5) = sum(abs(label_sigmoid-targets(end-M:end)))/length(targets(end-M:end));
+%         fprintf('%d%% error for sigmoid SVM\n',round(100*SVM_error(error_index,dataset,5)))
+%         save('svm_error','SVM_error')
+%         clearvars -except SVM_error M N frac dataset error_index;
+    end
+    
+end

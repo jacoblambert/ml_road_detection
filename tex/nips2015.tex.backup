@@ -107,30 +107,28 @@ The urban unmarked environment is the most challenging of the three as the typic
 \subsection{Superpixel Segmentation}
 While the classification could be performed for each pixel, the approach taken in this work is to first segment each image into a set of superpixels. There are several advantages to this, the first and foremost is that it heavily reduces training time; there are approximately 46 million pixels per dataset. If we can segment the image into a set of similar looking patches, we heavily reduce the number of training examples without losing much information. Furthermore, the information provided by individual pixels is limited by the RGB color intensities and the pixel position. A set of pixels allows us to compute a variety of features, as dicussed in section \ref{sec:feat}. Superpixel segmentation essentially allows us reduce the number of examples while increasing the dimensionality of each examples.
 
-Here we use the Simple Linear Iterative Clustering (SLIC) algorithm[2] to segment the each image in approximately $750$ superpixels. The algorithm creates superpixels by clustering pixels of similar colors. Intuitively, the approach is adequate for segmenting roads as we expect them to be uniform in color but figure \ref{fig:SLIC} shows that the lack of road markers leads to poor segmentation.
+Here we use the Simple Linear Iterative Clustering (SLIC) algorithm[2] to segment the each image in approximately $750$ superpixels. The algorithm creates superpixels by clustering pixels of similar colors. Intuitively, the approach is adequate for segmenting roads as we expect them to be uniform in color but figure \ref{fig:SLIC} shows that SLIC performs poorly in a variety of scenarios. Notable examples are driveways which SLICO fails to segment in the top image  of figure \ref{fig:SLIC}. In the middle image, SLIC manages to segment the road from the grassy region on the left, but fails to properly differentiate road from sidewalk on the right. In the bottom image, SLIC segments all shadows in the scene regardless of the actual scene content. The images in each respective datasets are similar and as such there were many cases of poor segmentation which inevitably led to several superpixels representing both road and not-road. Classification on those superpixels is especially challenging, as shown in section \ref{sec:results}
 
 \begin{figure}[ht!]
-\centering
- \includegraphics[width=0.5\textwidth]{figs/SLICOuu.pdf}\\
- \vspace{-2pt}
+\centering \hspace{-1.1pt}
+ \includegraphics[width=0.5045\textwidth]{figs/SLICOuu.pdf}\\
+ \vspace{-2.2pt}
  \includegraphics[width=0.5\textwidth]{figs/SLICOum.pdf}\\
- \vspace{-2pt}
- \includegraphics[width=0.5\textwidth]{figs/SLICOumm.pdf}\\
- \caption{Performance of the SLIC algorithm on the um dataset.}\label{fig:SLIC}
+ \vspace{-4.0pt} \hspace{-1.1pt}
+ \includegraphics[width=0.5045\textwidth]{figs/SLICOumm.pdf}\\
+ \caption{Performance of the SLIC algorithm on the uu dataset (top), um dataset (middle) and umm dataset .}\label{fig:SLIC}
 \end{figure}
-
-*Talk about performance on each environment*
 
 As the segmentation is imperfect, some superpixels will inevitably contain positive and negative examples. To solve this issue, a new ground truth image was created (shown in figure \ref{fig:SLICgt}), where each superpixel was classified based on the majority of pixels in its cluster.
 
 \begin{figure}
  \centering
-  \includegraphics[width=0.49\linewidth]{figs/noSLICimage}\hspace{-3pt}
-  \includegraphics[width=0.49\linewidth]{figs/SLICimage.png}\hspace{-3pt}\\
+  \includegraphics[width=0.49\linewidth]{figs/noSLICimage.pdf}\hspace{-3pt}
+  \includegraphics[width=0.49\linewidth]{figs/SLICimage.pdf}\hspace{-3pt}\\
   \vspace{-2pt}
-  \includegraphics[width=0.49\linewidth]{figs/noSLICgt.png}\hspace{-3pt}
-  \includegraphics[width=0.49\linewidth]{figs/SLICgt.png}\hspace{-3pt}
-  \caption{The image segmentation pipeline is shown here. The starting image (top left) is first segmented into superpixels by SLIC (top right) then the label (top l
+  \includegraphics[width=0.49\linewidth]{figs/noSLICgt.pdf}\hspace{-3pt}
+  \includegraphics[width=0.49\linewidth]{figs/SLICgt.pdf}
+  \caption{The image segmentation pipeline is shown here. The starting image (top left) is first segmented into superpixels by SLIC (top right) then the label (bottom left) is adjusted to be uniform within superpixels (bottom right).}
 \end{figure}
 
 
@@ -146,10 +144,12 @@ $\mbf{r}^{(i)}=\left[x^{(i)}~~ y^{(i)}\right]$ is the centroid of the superpixel
 \begin{equation}
  \mbf{r}^{(i)} = \frac{1}{N}\sum_{n=1}^N \mbf{r}^{(i)}_n.
 \end{equation}
+
 Then, $\bs{\mu}_{RGB}^{(i)} = \left[\mu_{R}^{(i)}~~\mu_{G}^{(i)} ~~\mu_{B}^{(i)}  \right]$ and $\bs{\sigma}_{RGB}^{(i)} = \left[\sigma_{R}^{(i)}~~\sigma_{G}^{(i)} ~~\sigma_{B}^{(i)}  \right]$ are the respective pixel intensity mean and variance for Red, Blue and Green color channels. Finally, we compute the gradient magnitude of the image in each color channel, which produces an image shown in figure \ref{fig:grad}. As computing the gradient picks out high frequency color variations, we expect it to pick out edges or high irregular regions like vegetation. Roads which are uniform should have low gradient magnitude and even lower variation. $\bs{\mu}_{\nabla RGB}^{(i)}$ and $\bs{\sigma}_{\nabla RGB}^{(i)}$ are then the mean color and variation for each color channel in the gradient image.
+
 \begin{figure}[ht!]
 \centering
- \includegraphics[width=0.5\textwidth]{figs/grad.pdf}\\
+ \includegraphics[width=0.7\textwidth]{figs/grad.pdf}\\
  \caption{Gradient magnitude of one of the images.}\label{fig:grad}
 \end{figure}
 
@@ -158,9 +158,12 @@ Then, $\bs{\mu}_{RGB}^{(i)} = \left[\mu_{R}^{(i)}~~\mu_{G}^{(i)} ~~\mu_{B}^{(i)}
 \section{Algorithms}
 \subsection{\textit{k} Nearest Neighbors}
 \subsection{Support Vector Machines}
+
+Initial testing of SVMs revealed that their ability to generalize depended heavily on the size of the dataset. Using 70\% of the dataset for training led to poor results
+
 \subsection{Neural Network}
 
-\section{Results}
+\section{Results}\label{sec:results}
 
 \section{Discussion}
 

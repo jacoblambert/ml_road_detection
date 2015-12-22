@@ -12,11 +12,11 @@ if showImgs == 1
 %     figure(2)
 %     imagesc(labels)
 % show the superpixel borders
-    border_img = superpixelBorder(img,labels);
-    figure(3)
-    imagesc(border_img)
-    axis equal
-    axis([0 size(img,2) 0 size(img,1)])
+%     border_img = superpixelBorder(img,labels);
+%     figure(3)
+%     imagesc(border_img)
+%     axis equal
+%     axis([0 size(img,2) 0 size(img,1)])
 end
 
 end
